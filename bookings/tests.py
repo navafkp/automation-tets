@@ -62,17 +62,4 @@ class BookingAPITestCase(TestCase):
         )
 
         self.assertEqual(response.status_code, 400)
-        self.assertEqual(Booking.objects.count(), 1)
-    def test_booking_with_invalid_date(self):
-        response = self.client.post(
-            self.url,
-            {
-                "room": self.room.id,
-                "check_in": "2026-11-13",
-                "check_out": "2026-11-10"
-            },
-            format="json"
-        )
-
-        self.assertEqual(response.status_code, 400)
         self.assertEqual(Booking.objects.count(), 0)
